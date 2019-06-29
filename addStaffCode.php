@@ -60,7 +60,8 @@ $arr = array('Yes'=> 1,'No'=> 0);
 					</script>";
 			}	 
 
-	} elseif ($region == "SK GAS") {
+	}
+ 	} elseif ($region == "SK GAS") {
 	
 		if(isset($_POST["submit"])){
 			$sql = "INSERT INTO staffskgas (staffID, staffName, trade, region, locationS, jobGrade, retirementDate, statusA, eLearning, heartMind, DCS, OTS, oralInterview, MME) values ('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
@@ -80,7 +81,8 @@ $arr = array('Yes'=> 1,'No'=> 0);
 					</script>";
 			}	
 
-	} elseif ($region == "SBA") {
+	} 
+	}elseif ($region == "SBA") {
 	
 		if(isset($_POST["submit"])){
 			$sql = "INSERT INTO staffsba (staffID, staffName, trade, region, locationS, jobGrade, retirementDate, statusA, eLearning, heartMind, DCS, OTS, oralInterview, MME) values ('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
