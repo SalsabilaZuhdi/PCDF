@@ -254,7 +254,7 @@ function checkPass()
         <div class="container">-->
         
             <!-- <form class="form-horizontal" role="form" name="form1" method="post" action="pendaftaranBaruCode.php"> -->
-            <form class="form-horizontal" name="form1" method="post" action="addStaffCode.php">
+            <form class="form-horizontal" name="addStaff" method="post" action="addStaffCode.php" enctype="multipart/form-data">
 
                 <div class="form-group">
                     	<label for="staffID" class="col-sm-2 control-label">Staff ID</label>
