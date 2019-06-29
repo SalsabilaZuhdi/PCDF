@@ -1,0 +1,450 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+/* reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*end reset*/
+body{
+	font-family: 'Verdana';
+	background: #00B1A9;
+	/* background:url(../images/banner1.png) 0px 0px;*/
+}
+/*-- main --*/
+.main{
+	width: 30%;
+    margin: 8em auto 0;
+    padding: 4em 4em 5em;
+    background: #fff;
+}
+.main h1{
+	color:rgb(5, 5, 5);
+	text-align:center;
+	font-size:2em;
+	font-family: 'Verdana';
+	margin:0 0 2em;
+}
+.main input[type="text"],.main input[type="password"]{
+	outline: none;
+    border: none;
+    background: #f9f9f9;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 15px 10px;
+    width:96%;
+    font-size: 1em;
+    color: #C4C4C4;
+    text-align: center;
+	font-family: 'Verdana', cursive !important;
+}
+.main input[type="password"]{
+	margin:1.5em 0;
+}
+.main input[type="submit"]{
+	outline:none;
+	border:none;
+	background:#848ea3;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	padding:15px 10px;
+	width:100%;
+	color:#fff;
+	font-size:1em;
+	font-family: 'Verdana', cursive !important;
+	cursor:pointer;
+	-webkit-transition: width 2s;
+    transition: width 2s;
+    transition-timing-function: linear;
+}
+.main input[type="submit"]:hover{
+	background:#8597C4;
+}
+.main a{
+	display:block;
+	font-size:1em;
+	color:#fff;
+	margin:1.5em 0 0;
+	text-align:center;
+	text-decoration:none;
+}
+.main a:hover{
+	color:#DCD8D9;
+}
+ /*-- main1 --*/
+.main1{
+	width: 30%;
+    margin: 8em auto 0;
+    padding: 4em 4em 5em;
+    background: #3C9;
+}
+.main1 h1{
+	color:#fff;
+	text-align:center;
+	font-size:2em;
+	margin:0 0 2em;
+}
+.main1 input[type="text"],.main1 input[type="password"]{
+	outline: none;
+    border: none;
+    background: #f9f9f9;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 15px 10px;
+    width:96%;
+    font-size: 1em;
+    color: #C4C4C4;
+    text-align: center;
+	font-family: 'Verdana', cursive !important;
+}
+.main1 input[type="password"]{
+	margin:1.5em 0;
+}
+.main1 input[type="submit"]{
+	outline:none;
+	border:none;
+	background: #9FC;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-o-border-radius:5px;
+	-ms-border-radius:5px;
+	padding:15px 10px;
+	width:100%;
+	color:#fff;
+	font-size:1em;
+	font-family: 'Verdana', cursive !important;
+	cursor:pointer;
+	-webkit-transition: width 2s;
+    transition: width 2s;
+    transition-timing-function: linear;
+}
+.main1 input[type="submit"]:hover{
+	background: #399;
+}
+.main1 a{
+	display:block;
+	font-size:1em;
+	color:#fff;
+	margin:1.5em 0 0;
+	text-align:center;
+	text-decoration:none;
+}
+.main1 a:hover{
+		color:#DCD8D9;
+}
+
+
+
+
+.footer{
+	text-align:center;
+	padding:2em 0 0;
+}
+.footer p{
+	font-size:1em;
+	color:#999;
+	margin:0;
+}
+.footer p a{
+	color:#000000;
+}
+.footer p a:hover{
+	color:#999;
+}
+/*-- start-responsive-design --*/
+@media (max-width:1366px){
+	.main {
+		margin: 5em auto 0;
+	}
+}
+@media (max-width:1280px){
+	.main input[type="text"], .main input[type="password"] {
+		width: 95%;
+	}
+}
+@media (max-width:1024px){
+	.main {
+		width: 45%;
+	}
+}
+@media (max-width:768px){
+	.main {
+		width: 55%;
+		padding: 3em 3em 4em;
+	}
+}
+@media (max-width:736px){
+	.footer {
+		padding: 2em 0;
+	}
+}
+@media (max-width:640px){
+	.main {
+		width: 70%;
+	}
+	.main h1 {
+		margin: 0 0 1.5em;
+	}
+}
+@media (max-width:568px){
+	.main {
+		margin: 3em auto 0;
+	}
+}
+@media (max-width:480px){
+	.main h1 {
+		margin: 0 0 1em;
+		font-size: 1.6em;
+	}
+	.main {
+		width: 80%;
+		padding: 2em 2em 2.5em;
+	}
+}
+@media (max-width:414px){
+	.footer p {
+		margin: 0 auto;
+		width: 90%;
+	}
+	.main input[type="text"], .main input[type="password"] {
+		width: 94%;
+	}
+}
+@media (max-width:375px){
+	.main input[type="text"], .main input[type="password"] {
+		width: 93%;
+	}
+}
+@media (max-width:320px){
+	.main {
+		width: 85%;
+		padding: 1em 1em 1.5em;
+	}
+	.main h1 {
+		font-size: 1.4em;
+	}
+	.main input[type="text"], .main input[type="password"] {
+		font-size: 14px;
+		padding: 10px;
+		width: 92.5%;
+	}
+	.main input[type="password"] {
+		margin: 1em 0;
+	}
+	.main input[type="submit"]{
+		padding:10px;
+	}
+	.main a {
+		font-size: 14px;
+	}
+	.footer p {
+		font-size: 13px;
+		line-height: 1.8em;
+	}
+	
+	/*-- start-responsive-design (main1) --*/
+@media (max-width:1366px){
+	.main1 {
+		margin: 5em auto 0;
+	}
+}
+@media (max-width:1280px){
+	.main1 input[type="text"], .main1 input[type="password"] {
+		width: 95%;
+	}
+}
+@media (max-width:1024px){
+	.main1 {
+		width: 45%;
+	}
+}
+@media (max-width:768px){
+	.main1 {
+		width: 55%;
+		padding: 3em 3em 4em;
+	}
+}
+@media (max-width:736px){
+	.footer {
+		padding: 2em 0;
+	}
+}
+@media (max-width:640px){
+	.main1 {
+		width: 70%;
+	}
+	.main1 h1 {
+		margin: 0 0 1.5em;
+	}
+}
+@media (max-width:568px){
+	.main1 {
+		margin: 3em auto 0;
+	}
+}
+@media (max-width:480px){
+	.main1 h1 {
+		margin: 0 0 1em;
+		font-size: 1.6em;
+	}
+	.main1 {
+		width: 80%;
+		padding: 2em 2em 2.5em;
+	}
+}
+@media (max-width:414px){
+	.footer p {
+		margin: 0 auto;
+		width: 90%;
+	}
+	.main1 input[type="text"], .main1 input[type="password"] {
+		width: 94%;
+	}
+}
+@media (max-width:375px){
+	.main1 input[type="text"], .main1 input[type="password"] {
+		width: 93%;
+	}
+}
+@media (max-width:320px){
+	.main1 {
+		width: 85%;
+		padding: 1em 1em 1.5em;
+	}
+	.main1 h1 {
+		font-size: 1.4em;
+	}
+	.main1 input[type="text"], .main1 input[type="password"] {
+		font-size: 14px;
+		padding: 10px;
+		width: 92.5%;
+	}
+	.main1 input[type="password"] {
+		margin: 1em 0;
+	}
+	.main1 input[type="submit"]{
+		padding:10px;
+	}
+	.main1 a {
+		font-size: 14px;
+	}
+	.footer p {
+		font-size: 13px;
+		line-height: 1.8em;
+	}
+
+}
+body{ font-family: Verdana;}
+.none{ display:none;}
+.dropdown{color: #444444;font-size:17px;}
+#calender_section{ width:700px; margin:30px auto 0;}
+#calender_section h2{ background-color:#efefef; color:#444444; font-size:17px; text-align:center; line-height:40px;}
+#calender_section h2 a{ color:#F58220; float:none;}
+#calender_section_top{ width:100%; float:left; margin-top:20px;}
+#calender_section_top ul{padding:0; list-style-type:none;}
+#calender_section_top ul li{ float:left; display:block; width:99px; border-right:1px solid #fff;  text-align:center; font-size:14px; min-height:0; background:none; box-shadow:none; margin:0; padding:0;}
+#calender_section_bot{ width:100%; margin-top:20px; float:left; border-left:1px solid #ccc; border-bottom:1px solid #ccc;}
+#calender_section_bot ul{ margin:0; padding:0; list-style-type:none;}
+#calender_section_bot ul li{ float:left; width:99px; height:80px; text-align:center; border-top:1px solid #ccc; border-right:1px solid #ccc; min-height:0; background:none; box-shadow:none; margin:0; padding:0; position:relative;}
+#calender_section_bot ul li span{ margin-top:7px; float:left; margin-left:7px; text-align:center;}
+
+.grey{ background-color:#DDDDDD !important;}
+.light_sky{ background-color:#B9FFFF !important;}
+
+/*========== Hover Popup ===============*/
+.date_cell { cursor: pointer; cursor: hand; }
+.date_cell:hover { background: #DDDDDD !important; }
+.date_popup_wrap {
+	position: absolute;
+	width: 143px;
+	height: 115px;
+	z-index: 9999;
+	top: -115px;
+	left:-55px;
+	background: transparent url(add-new-event.png) no-repeat top left;
+	color: #666 !important;
+}
+.events_window {
+	overflow: hidden;
+	overflow-y: auto;
+	width: 133px;
+	height: 115px;
+	margin-top: 28px;
+	margin-left: 25px;
+}
+.event_wrap {
+	margin-bottom: 10px; padding-bottom: 10px;
+	border-bottom: solid 1px #E4E4E7;
+	font-size: 12px;
+	padding: 3px;
+}
+.date_window {
+	margin-top:20px;
+	margin-bottom: 2px;
+	padding: 5px;
+	font-size: 16px;
+	margin-left:9px;
+	margin-right:14px
+}
+.popup_event {
+	margin-bottom: 2px;
+	padding: 2px;
+	font-size: 16px;
+	width:100%;
+}
+.popup_event a {color: #000000 !important;}
+.packeg_box a {color: #F58220;float: right;}
+a:hover {color: #181919;text-decoration: underline;}
+
+@media only screen and (min-width:480px) and (max-width:767px) {
+#calender_section{ width:336px;}
+#calender_section_top ul li{ width:47px;}
+#calender_section_bot ul li{ width:47px;}
+}
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+#calender_section{ width:219px;}
+#calender_section_top ul li{ width:30px; font-size:11px;}
+#calender_section_bot ul li{ width:30px;}
+#calender_section_bot{ width:217px;}
+#calender_section_bot ul li{ height:50px;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+#calender_section{ width:530px;}
+#calender_section_top ul li{ width:74px;}
+#calender_section_bot ul li{ width:74px;}
+#calender_section_bot{ width:525px;}
+#calender_section_bot ul li{ height:50px;}
+}
+}
