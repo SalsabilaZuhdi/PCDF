@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'conn/dbconnection.php';
-$id = $_SESSION['id'];
  if (@$_SESSION['password'] == "")
  {
 	echo "<script> alert('Log In unsuccessful.');</script>";
@@ -9,37 +8,59 @@ $id = $_SESSION['id'];
  }
 
  else {}
-@$staff_ID = $_POST['staff_ID'];
 
-$select = "call select_resetPassS('".$_REQUEST['staff_ID']."')";
+
+// $trade=$_POST['trade'];
+// $jobGrade=$_POST['jobGrade'];
+// $statusA=$_POST['statusA'];
+// $retirementDate=$_POST['retirementDate'];
+// $eLearning=$arr2[$_POST['eLearning']];
+// $heartMind=$arr2[$_POST['heartMind']];
+// $DCS=$arr2[$_POST['DCS']];
+// $OTS=$arr2[$_POST['OTS']];
+// $oralInterview=$arr2[$_POST['oralInterview']];
+// $MME=$arr2[$_POST['MME']];
+
+	$select = "call select_resetPassS('".$_REQUEST['staff_ID']."')";
 	$pcdf_select =mysqli_query($dba,$select) or die (mysqli_error());
-		mysqli_next_result($dba);
+	mysqli_next_result($dba);
 	$row = mysqli_fetch_array($pcdf_select);
-		    if(isset($_REQUEST['submit']))
-		{
-			
-					echo $update = "call update_changePassword('".$_REQUEST['staff_ID']."', 'abc123')";
+
+		//     if(isset($_REQUEST['update'])) {
+
+		// 		$trade=$_POST['trade'];
+		// 		$jobGrade=$_POST['jobGrade'];
+		// 		$statusA=$_POST['statusA'];
+		// 		$retirementDate=$_POST['retirementDate'];
+		// 		$eLearning=$arr2[$_POST['eLearning']];
+		// 		$heartMind=$arr2[$_POST['heartMind']];
+		// 		$DCS=$arr2[$_POST['DCS']];
+		// 		$OTS=$arr2[$_POST['OTS']];
+		// 		$oralInterview=$arr2[$_POST['oralInterview']];
+		// 		$MME=$arr2[$_POST['MME']];
+
+		// 		echo $update = "call update_staffpma('".$_REQUEST['staff_ID']."', '".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
 				
-				$pcdf_update = mysqli_query($dba,$update);
-					mysqli_next_result($dba);
+		// 		$pcdf_update = mysqli_query($dba,$update);
+		// 		mysqli_next_result($dba);
 			  
-				if ($pcdf_update) 
-				{
-				  	echo "<script>alert('Password has been change!')</script>";
-					echo "<script>
-					window.onunload = refreshParent;
-					function refreshParent() {
-					window.opener.location.reload(); }
-					window.close()
+		// 		if ($pcdf_update) 
+		// 		{
+		// 		  	echo "<script>alert('Staff Details has been updated !')</script>";
+		// 			echo "<script>
+		// 			window.onunload = refreshParent;
+		// 			function refreshParent() {
+		// 			window.opener.location.reload(); }
+		// 			window.close()
 					
-					</script>";
-				}
-				else
-				{
-					echo "<script> alert('Unsuccessful. Please try again!')</script>";
-					echo '<META HTTP-EQUIV="Refresh" CONTENT="0.01; URL=editInfoS.php">';
-				} 
-		}
+		// 			</script>";
+		// 		}
+		// 		else
+		// 		{
+		// 			echo "<script> alert('Unsuccessful. Please try again!')</script>";
+		// 			echo '<META HTTP-EQUIV="Refresh" CONTENT="0.01; URL=editInfoS.php">';
+		// 		} 
+		// }
 		
 	
 ?>
@@ -201,7 +222,7 @@ $select = "call select_resetPassS('".$_REQUEST['staff_ID']."')";
 
 											<div class="space"></div>
 
-											<form class="form-horizontal" action="" method="post">
+											<form class="form-horizontal" action="updateStaffPMA.php" method="post" enctype="multipart/form-data">
 												<div class="tabbable">
 											
 													<div class="tab-content profile-edit-tab-content">
@@ -213,7 +234,9 @@ $select = "call select_resetPassS('".$_REQUEST['staff_ID']."')";
 
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<h5><?php echo $row['staffID'];?></h5>
+																	<input type="text" name="staffID" id="staffID" 
+                       												 placeholder="" class="form-control" value="<?php echo $row['staffID'];?>">
+																	<!--  -->
 														
 																	</span>
 																</div>
@@ -226,7 +249,6 @@ $select = "call select_resetPassS('".$_REQUEST['staff_ID']."')";
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
 																	<h5><?php echo $row['staffName'];?></h5>
-														
 																	</span>
 																</div>
 															</div>
@@ -235,44 +257,149 @@ $select = "call select_resetPassS('".$_REQUEST['staff_ID']."')";
 																<label class="col-sm-3 control-label no-padding-right">Trade : </label>
 
 																<div class="col-sm-9">
+																<span class="input-icon input-icon-right">
+																	<select name="trade" id="trade" class="form-control" value="<?php echo $row['trade'];?>">
+																		<option>Technician (DS-Panel)</option>
+																		<option>Technician (DS-Production/Instrument)</option>
+																		<option>Technician (DS-Production/Mechanical)</option>
+																		<option>Technician (DS-Instrument/Production)</option>
+																	</select>
+																</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">Region : </label>
+																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<h5><?php echo $row['trade'];?></h5>
-
+																	<input type="text" name="region" id="region" 
+                       												 placeholder="" class="form-control" value="<?php echo $row['region'];?>">
 																	</span>
 																</div>
 															</div>
 															<div class="space-4"></div>
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right">Location : </label>
-
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
 																	<h5><?php echo $row['locationS'];?></h5>
-
 																	</span>
 																</div>
 															</div>
 															<div class="space-4"></div>
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right">JobGrade : </label>
-
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<h5><?php echo $row['jobGrade'];?></h5>
-														
+																	<select name="jobGrade" id="jobGrade" class="form-control" value="<?php echo $row['jobGrade'];?>">
+																		<option>NT2</option>
+																		<option>NT3</option>
+																		<option>NT4</option>
+																		<option>NT5</option>
+																	</select>																
 																	</span>
 																</div>
 															</div>
 															<div class="space-4"></div>
 															<div class="form-group">
-																  <input name="submit" type="submit" id="submit" value="Update" />
-																	<input name="submit" type="submit" id="submit" value="Delete" />
+																<label class="col-sm-3 control-label no-padding-right">Retirement Date : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">	
+																	<input type="date" name="retirementDate" id="retirementDate" value="<?php echo $row['retirementDate'];?>" class="form-control">					
+																	</span>
+																</div>
 															</div>
-												
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">Status : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="statusA" id="statusA" class="form-control" value="<?php echo $row['statusA'];?>">
+																		<option>Successor</option>
+																		<option>Certified</option>
+																	</select>																
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">E-Learning : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="eLearning" id="eLearning" class="form-control" value="<?php echo $arr[$row['eLearning']];?>">
+																		<option>Yes</option>
+																		<option>No</option>
+																	</select>
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">Heart & Minds : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="heartMind" id="heartMind" class="form-control" value="<?php echo $arr[$row['heartMind']];?>">
+																		<option>Yes</option>
+																		<option>No</option>
+																	</select>																
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">DCS : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="DCS" id="DCS" class="form-control" value="<?php echo $arr[$row['DCS']];?>">
+																		<option>Yes</option>
+																		<option>No</option>
+																	</select>
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">OTS : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="OTS" id="OTS" class="form-control" value="<?php echo $arr[$row['OTS']];?>">
+																		<option>Yes</option>
+																		<option>No</option>
+																	</select>
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">Oral Interview : </label>
+
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="oralInterview" id="oralInterview" class="form-control" value="<?php echo $arr[$row['oralInterview']];?>">
+																		<option>Yes</option>
+																		<option>No</option>
+																	</select>			
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">MME : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<select name="MME" id="MME" class="form-control" value="<?php echo $arr[$row['MME']];?>">	
+																		<option>Yes</option>
+																		<option>No</option>
+																	</select>					
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																  <input name="update" type="submit" id="update" value="Update" />
+																	<!-- <input name="submit" type="submit" id="submit" value="Delete" /> -->
+															</div>
 															</form>
-														
-								
-								
 														</div>
 														</div>
 														</div>

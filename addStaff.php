@@ -241,7 +241,7 @@ function checkPass()
 								</div><!-- /.pull-left -->
 						  </div><!-- /.ace-settings-box -->
 					  </div><!-- /.ace-settings-container -->
-		<div class="page-header">
+						<div class="page-header">
 							<h1>
 								Staff Information
 							</h1>
@@ -275,7 +275,7 @@ function checkPass()
                 </div>
 
             	<div class="form-group">
-                    	<label for="trade" class="col-sm-2 control-label">Trade</label>
+                    <label for="trade" class="col-sm-2 control-label">Trade</label>
                     <div class="col-sm-9">
                         <select name="trade" id="trade" class="form-control">
                             <option selected>-Options-</option>
@@ -325,9 +325,14 @@ function checkPass()
                 <div class="form-group">
                     	<label for="statusA" class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-9">
-                        <input type="text" name="statusA" id="statusA" 
+                        <!-- <input type="text" name="statusA" id="statusA" 
                         placeholder="" class="form-control" autofocus required>
-                        <!-- <span class="help-block"></span> -->
+                        <span class="help-block"></span> -->
+						<select name="statusA" id="statusA" class="form-control">
+                            <option selected>-Status-</option>
+                            <option>Certified</option>
+                            <option>Successor</option>
+                        </select>
                     </div>
                 </div>
                 

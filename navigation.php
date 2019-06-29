@@ -32,16 +32,7 @@
 							<li class="">
 								<a href="addStaff.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Add Staff
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="staffInfo.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Staff Information
+									Add New Staff
 								</a>
 
 								<b class="arrow"></b>
