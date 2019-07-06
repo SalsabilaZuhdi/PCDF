@@ -186,97 +186,84 @@ $id = $_SESSION['id'];
 											<div class="widget-body">
 												<div class="widget-main no-padding">
 												<?php
-											 $select = "call select_dashboard_course";
+											 $selectPMA = "SELECT staffID, count(*) as totalPMA FROM staffpma";
+											 $selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil";
+											 $selectSKGAS = "SELECT staffID, count(*) as totalSKGAS FROM staffskgas";
+											 $selectSBA = "SELECT staffID, count(*) as totalSBA FROM staffsba";
 											?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
 															<tr>
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Course 
+																	<i class="ace-icon fa fa-caret-right blue"></i>Region
 																</th>
 
 																<th>
 																	<i class="ace-icon fa fa-caret-right blue"></i>Total
 																</th>
 															</tr>
-														</thead>
-														
-
+														</thead>													
 														<tbody>
 															<?php
-															$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
+															$essms_select =mysqli_query($dba,$selectPMA) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
 															{
 															?>
-														
 															<tr>
-																<td><?php echo $row['course'];?></td>
-
-																<td>
-						
-																	<b class="blue"><?php echo $row['total'];?></b>
-																</td>
+																<td>PMA</td>
+																<td><b class="black"><?php echo $row['totalPMA'];?></b></td>
 															</tr>
+															<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectSKOIL) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+																<td>SK OIL</td>
+																<td><b class="black"><?php echo $row['totalSKOIL'];?></b></td>
+															</tr>
+															<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectSKGAS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+																<td>SK GAS</td>
+																<td><b class="black"><?php echo $row['totalSKGAS'];?></b></td>
+															</tr>
+															<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectSBA) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+																<td>SBA</td>
+																<td><b class="black"><?php echo $row['totalSBA'];?></b></td>
+															</tr>
+															<?php };?>
 														</tbody>
-														  <?php };?>
+													
 													</table>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
-																		<div class="col-sm-5">
+									<div class="col-sm-5">
 										<div class="widget-box transparent">
-											<div class="widget-header widget-header-flat">
-												<h4 class="widget-title lighter">
-													<i class="ace-icon fa fa-star orange"></i>
-													Total of Successor Panelman
-												</h4>
-
-												<div class="widget-toolbar">
-													<a href="#" data-action="collapse">
-														<i class="ace-icon fa fa-chevron-up"></i>
-													</a>
-												</div>
-											</div>
-
+										
 											<div class="widget-body">
 												<div class="widget-main no-padding">
-												<?php
-											 $select = "call select_dashboard_depart";
-											?>
 													<table class="table table-bordered table-striped">
-														<thead class="thin-border-bottom">
-															<tr>
-																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Course 
-																</th>
-
-																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Total
-																</th>
-															</tr>
-														</thead>
-														
-
 														<tbody>
-															<?php
-															$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
-															mysqli_next_result($dba);
-															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-														
-															<tr>
-																<td><?php echo $row['department'];?></td>
-
-																<td>
-						
-																	<b class="blue"><?php echo $row['total'];?></b>
-																</td>
-															</tr>
+													
 														</tbody>
-														  <?php };?>
 													</table>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
@@ -293,7 +280,7 @@ $id = $_SESSION['id'];
 											<div class="widget-header widget-header-flat">
 												<h4 class="widget-title lighter">
 													<i class="ace-icon fa fa-star orange"></i>
-													Total Panelman 	<span class="label label-danger arrowed">Certified</span>
+													Total Panelman <span class="label label-success arrowed-in arrowed-in-right">Certified</span>
 												</h4>
 
 												<div class="widget-toolbar">
@@ -302,17 +289,19 @@ $id = $_SESSION['id'];
 													</a>
 												</div>
 											</div>
-
 											<div class="widget-body">
 												<div class="widget-main no-padding">
 												<?php
-											 $select = "call select_dashboard_notAssigned";
-											?>
+													$selectPMA = "SELECT staffID, count(*) as totalPMA FROM staffpma  where statusA ='Certified'";
+													$selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil where statusA ='Certified'";
+													$selectSKGAS = "SELECT staffID, count(*) as totalSKGAS FROM staffskgas where statusA ='Certified'";
+													$selectSBA = "SELECT staffID, count(*) as totalSBA FROM staffsba where statusA ='Certified'";
+												?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
 															<tr>
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Course 
+																	<i class="ace-icon fa fa-caret-right blue"></i>Region
 																</th>
 
 																<th>
@@ -321,36 +310,63 @@ $id = $_SESSION['id'];
 															</tr>
 														</thead>
 														
-
 														<tbody>
 															<?php
-															$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
+															$essms_select =mysqli_query($dba,$selectPMA) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
 															{
 															?>
-														
 															<tr>
-																<td><?php echo $row['course'];?></td>
-
-																<td>
-						
-																	<b class="red"><?php echo $row['total'];?></b>
-																</td>
+															<td>PMA</td>
+															<td><b class="green"><?php echo $row['totalPMA'];?></b></td>
 															</tr>
-														</tbody>
 														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectSKOIL) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SK OIL</td>
+															<td><b class="green"><?php echo $row['totalSKOIL'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectSKGAS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SK GAS</td>
+															<td><b class="green"><?php echo $row['totalSKGAS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectSBA) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SBA</td>
+															<td><b class="green"><?php echo $row['totalSBA'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
 													</table>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
-																		<div class="col-sm-5">
+									<div class="col-sm-5">
 										<div class="widget-box transparent">
 											<div class="widget-header widget-header-flat">
 												<h4 class="widget-title lighter">
 													<i class="ace-icon fa fa-star orange"></i>
-													Total Panelman 	<span class="label label-success arrowed-in arrowed-in-right">Successor</span>
+													Total Panelman 	<span class="label label-primary arrowed-in arrowed-in-right">Successor</span>
 												</h4>
 
 												<div class="widget-toolbar">
@@ -363,47 +379,521 @@ $id = $_SESSION['id'];
 											<div class="widget-body">
 												<div class="widget-main no-padding">
 												<?php
-											 $select = "call select_dashboard_assigned";
+											//  $select = "call select_dashboard_assigned";
+											 $selectPMA = "SELECT staffID, count(*) as totalPMA FROM staffpma  where statusA ='Successor'";
+											 $selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil where statusA ='Successor'";
+											 $selectSKGAS = "SELECT staffID, count(*) as totalSKGAS FROM staffskgas where statusA ='Successor'";
+											 $selectSBA = "SELECT staffID, count(*) as totalSBA FROM staffsba where statusA ='Successor'";
 											?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
 															<tr>
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Course 
+																	<i class="ace-icon fa fa-caret-right blue"></i>Region 
 																</th>
 
 																<th>
 																	<i class="ace-icon fa fa-caret-right blue"></i>Total
 																</th>
 															</tr>
-														</thead>
-														
-
+														</thead>														
 														<tbody>
-															<?php
-															$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
+														<?php
+															$essms_select =mysqli_query($dba,$selectPMA) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
 															{
 															?>
-														
 															<tr>
-																<td><?php echo $row['course'];?></td>
-
-																<td>
-						
-																	<b class="green"><?php echo $row['total'];?></b>
-																</td>
+															<td>PMA</td>
+															<td><b class="blue"><?php echo $row['totalPMA'];?></b></td>
 															</tr>
-														</tbody>
 														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectSKOIL) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SK OIL</td>
+															<td><b class="blue"><?php echo $row['totalSKOIL'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectSKGAS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SK GAS</td>
+															<td><b class="blue"><?php echo $row['totalSKGAS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectSBA) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SBA</td>
+															<td><b class="blue"><?php echo $row['totalSBA'];?></b></td>
+															</tr>
+														  <?php };?>
+														</tbody>
 													</table>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
 								</div><!-- /.row -->
+								<div class="hr hr32 hr-dotted"></div>
+								<div class="row">
+									<div class="col-sm-5">
+										<div class="widget-box transparent">
+											<div class="widget-header widget-header-flat">
+												<h4 class="widget-title lighter">
+													<i class="ace-icon fa fa-star orange"></i>
+													Total PMA <span class="label label-danger">Elements</span>
+												</h4>
 
+												<div class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+												</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+												<?php
+													$selectLearning = "SELECT staffID, count(*) as totalLearning FROM staffpma  where eLearning = 1";
+													$selectHeartMind = "SELECT staffID, count(*) as totalHeartMind FROM staffpma  where heartMind = 1";
+													$selectDCS = "SELECT staffID, count(*) as totalDCS FROM staffpma  where DCS = 1";
+													$selectOTS = "SELECT staffID, count(*) as totalOTS FROM staffpma  where OTS = 1";
+													$selectInterview = "SELECT staffID, count(*) as totalInterview FROM staffpma  where oralInterview = 1";
+													$selectMME = "SELECT staffID, count(*) as totalMME FROM staffpma  where MME = 1";
+												?>
+													<table class="table table-bordered table-striped">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Elements
+																</th>
+
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
+																</th>
+															</tr>
+														</thead>
+														
+														<tbody>
+															<?php
+															$essms_select =mysqli_query($dba,$selectLearning) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>E-Learning</td>
+															<td><b class="red"><?php echo $row['totalLearning'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectHeartMind) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Heart & Minds</td>
+															<td><b class="red"><?php echo $row['totalHeartMind'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectDCS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>DCS</td>
+															<td><b class="red"><?php echo $row['totalDCS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectOTS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Oral Interview</td>
+															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectInterview) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>OTS</td>
+															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectMME) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>MME</td>
+															<td><b class="red"><?php echo $row['totalMME'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
+													</table>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										</div><!-- /.widget-box -->
+									</div><!-- /.col -->
+									<div class="col-sm-5">
+										<div class="widget-box transparent">
+											<div class="widget-header widget-header-flat">
+												<h4 class="widget-title lighter">
+													<i class="ace-icon fa fa-star orange"></i>
+													Total SK OIL <span class="label label-danger">Elements</span>
+												</h4>
+
+												<div class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+												</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+												<?php
+													$selectLearning = "SELECT staffID, count(*) as totalLearning FROM staffskoil  where eLearning = 1";
+													$selectHeartMind = "SELECT staffID, count(*) as totalHeartMind FROM staffskoil  where heartMind = 1";
+													$selectDCS = "SELECT staffID, count(*) as totalDCS FROM staffskoil  where DCS = 1";
+													$selectOTS = "SELECT staffID, count(*) as totalOTS FROM staffskoil  where OTS = 1";
+													$selectInterview = "SELECT staffID, count(*) as totalInterview FROM staffskoil  where oralInterview = 1";
+													$selectMME = "SELECT staffID, count(*) as totalMME FROM staffskoil  where MME = 1";
+												?>
+													<table class="table table-bordered table-striped">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Elements
+																</th>
+
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
+																</th>
+															</tr>
+														</thead>
+														
+														<tbody>
+															<?php
+															$essms_select =mysqli_query($dba,$selectLearning) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>E-Learning</td>
+															<td><b class="red"><?php echo $row['totalLearning'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectHeartMind) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Heart & Minds</td>
+															<td><b class="red"><?php echo $row['totalHeartMind'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectDCS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>DCS</td>
+															<td><b class="red"><?php echo $row['totalDCS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectOTS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Oral Interview</td>
+															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectInterview) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>OTS</td>
+															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectMME) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>MME</td>
+															<td><b class="red"><?php echo $row['totalMME'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
+													</table>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										</div><!-- /.widget-box -->
+									</div><!-- /.col -->
+									</div>
+									<div class="hr hr32 hr-dotted"></div>
+									<div class="row">
+									<div class="col-sm-5">
+										<div class="widget-box transparent">
+											<div class="widget-header widget-header-flat">
+												<h4 class="widget-title lighter">
+													<i class="ace-icon fa fa-star orange"></i>
+													Total SK GAS <span class="label label-danger">Elements</span>
+												</h4>
+												<div class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+												</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+												<?php
+													$selectLearning = "SELECT staffID, count(*) as totalLearning FROM staffskgas  where eLearning = 1";
+													$selectHeartMind = "SELECT staffID, count(*) as totalHeartMind FROM staffskgas  where heartMind = 1";
+													$selectDCS = "SELECT staffID, count(*) as totalDCS FROM staffskgas  where DCS = 1";
+													$selectOTS = "SELECT staffID, count(*) as totalOTS FROM staffskgas  where OTS = 1";
+													$selectInterview = "SELECT staffID, count(*) as totalInterview FROM staffskgas  where oralInterview = 1";
+													$selectMME = "SELECT staffID, count(*) as totalMME FROM staffskgas  where MME = 1";
+												?>
+													<table class="table table-bordered table-striped">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Elements
+																</th>
+
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
+																</th>
+															</tr>
+														</thead>
+														
+														<tbody>
+															<?php
+															$essms_select =mysqli_query($dba,$selectLearning) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>E-Learning</td>
+															<td><b class="red"><?php echo $row['totalLearning'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectHeartMind) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Heart & Minds</td>
+															<td><b class="red"><?php echo $row['totalHeartMind'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectDCS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>DCS</td>
+															<td><b class="red"><?php echo $row['totalDCS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectOTS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Oral Interview</td>
+															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectInterview) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>OTS</td>
+															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectMME) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>MME</td>
+															<td><b class="red"><?php echo $row['totalMME'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
+													</table>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										</div><!-- /.widget-box -->
+									</div><!-- /.col -->
+									<div class="col-sm-5">
+										<div class="widget-box transparent">
+											<div class="widget-header widget-header-flat">
+												<h4 class="widget-title lighter">
+													<i class="ace-icon fa fa-star orange"></i>
+													Total SBA <span class="label label-danger">Elements</span>
+												</h4>
+
+												<div class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+												</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+												<?php
+													$selectLearning = "SELECT staffID, count(*) as totalLearning FROM staffsba  where eLearning = 1";
+													$selectHeartMind = "SELECT staffID, count(*) as totalHeartMind FROM staffsba  where heartMind = 1";
+													$selectDCS = "SELECT staffID, count(*) as totalDCS FROM staffsba  where DCS = 1";
+													$selectOTS = "SELECT staffID, count(*) as totalOTS FROM staffsba  where OTS = 1";
+													$selectInterview = "SELECT staffID, count(*) as totalInterview FROM staffsba  where oralInterview = 1";
+													$selectMME = "SELECT staffID, count(*) as totalMME FROM staffsba  where MME = 1";
+												?>
+													<table class="table table-bordered table-striped">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Elements
+																</th>
+
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
+																</th>
+															</tr>
+														</thead>
+														
+														<tbody>
+															<?php
+															$essms_select =mysqli_query($dba,$selectLearning) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>E-Learning</td>
+															<td><b class="red"><?php echo $row['totalLearning'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectHeartMind) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Heart & Minds</td>
+															<td><b class="red"><?php echo $row['totalHeartMind'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectDCS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>DCS</td>
+															<td><b class="red"><?php echo $row['totalDCS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectOTS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Oral Interview</td>
+															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectInterview) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>OTS</td>
+															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectMME) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>MME</td>
+															<td><b class="red"><?php echo $row['totalMME'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
+													</table>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										</div><!-- /.widget-box -->
+									</div><!-- /.col -->
+								</div>
 								<div class="hr hr32 hr-dotted"></div>
 								
 

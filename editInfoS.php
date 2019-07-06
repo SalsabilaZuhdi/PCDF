@@ -394,11 +394,15 @@ include 'conn/dbconnection.php';
 																	</span>
 																</div>
 															</div>
+															<center>
 															<div class="space-4"></div>
-															<div class="form-group">
+															
 																  <input name="update" type="submit" id="update" value="Update" />
 																	<!-- <input name="submit" type="submit" id="submit" value="Delete" /> -->
+																  <input name="delete" type="submit" id="delete" value="Delete" />
+																	<!-- <input name="submit" type="submit" id="submit" value="Delete" /> -->
 															</div>
+															</center>
 															</form>
 														</div>
 														</div>
