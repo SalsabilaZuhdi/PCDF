@@ -8,7 +8,7 @@ include 'conn/dbconnection.php';
  }
 
  else {}			
-	
+
 @$staffID = $_POST['staffID'];
 
 	$select = "call select_resetPassS('".$_REQUEST['staffID']."')";
@@ -16,23 +16,14 @@ include 'conn/dbconnection.php';
 	mysqli_next_result($dba);
 	$row = mysqli_fetch_array($pcdf_select);
 
-	if(isset($_REQUEST['submit']))	{
+	if(isset($_REQUEST['delete']))	{
 
-		$arr2 = array('Yes'=> 1,'No'=> 0);
-		$eLearning=$arr2[$_REQUEST['eLearning']];
-		$heartMind=$arr2[$_REQUEST['heartMind']];
-		$DCS=$arr2[$_REQUEST['DCS']];
-		$OTS=$arr2[$_REQUEST['OTS']];
-		$oralInterview=$arr2[$_REQUEST['oralInterview']];
-		$MME=$arr2[$_REQUEST['MME']];
-
-			// $update = "call update_staffpma('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
-			$update = "call update_staffpma('".$_REQUEST['staffID']."','".$_REQUEST['staffName']."','".$_REQUEST['trade']."','".$_REQUEST['region']."','".$_REQUEST['locationS']."','".$_REQUEST['jobGrade']."','".$_REQUEST['retirementDate']."','".$_REQUEST['statusA']."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
-			$essms_update = mysqli_query($dba,$update);
+			$delete = "call delete_staffpma('".$staffID."')";
+			$essms_delete = mysqli_query($dba,$delete);
 			mysqli_next_result($dba);
 		  
-			if ($essms_update) {
-				echo "<script>alert('Staff has been updated!')</script>";
+			if ($essms_delete) {
+				echo "<script>alert('Staff has been deleted!')</script>";
 				echo "<script>
 				window.onunload = refreshParent;
 				function refreshParent() {
@@ -40,8 +31,8 @@ include 'conn/dbconnection.php';
 				window.close()
 				</script>";
 			} else {
-				echo "<script> alert('Unsuccessful. Please try again!')
-				window.close()</script>";
+				echo "<script> alert('Unsuccessful. Please try again!')</script>";
+				echo '<META HTTP-EQUIV="Refresh" CONTENT="0.01; URL=editInfoS.php">';
 			}
 	}
 ?>
@@ -203,7 +194,7 @@ include 'conn/dbconnection.php';
 
 											<div class="space"></div>
 
-											<form class="form-horizontal" action="" method="post">
+											<form class="form-horizontal" method="post" enctype="multipart/form-data">
 												<div class="tabbable">
 											
 													<div class="tab-content profile-edit-tab-content">
@@ -212,10 +203,10 @@ include 'conn/dbconnection.php';
 															<div class="space-4"></div>
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right">Staff ID : </label>
+
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<input type="text" name="staffID" id="staffID" readonly
-                       												 placeholder="" class="form-control" value="<?php echo $row['staffID'];?>">
+                                                                    <h5><?php echo $row['staffID'];?></h5>
 																	</span>
 																</div>
 															</div>
@@ -226,23 +217,19 @@ include 'conn/dbconnection.php';
 
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<input type="text" name="staffName" id="staffName" readonly
-                       												 placeholder="" class="form-control" value="<?php echo $row['staffName'];?>">
+																	<h5><?php echo $row['staffName'];?></h5>
 																	</span>
 																</div>
 															</div>
 															<div class="space-4"></div>
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right">Trade : </label>
+
 																<div class="col-sm-9">
 																<span class="input-icon input-icon-right">
-																	<select name="trade" id="trade" class="form-control" value="<?php echo $row['trade'];?>">
-																		<option><?php echo $row['trade'];?></option>
-																		<option>Technician (DS-Panel)</option>
-																		<option>Technician (DS-Production/Instrument)</option>
-																		<option>Technician (DS-Production/Mechanical)</option>
-																		<option>Technician (DS-Instrument/Production)</option>
-																	</select>
+
+                                                                    <h5><?php echo $row['trade'];?></h5>
+																
 																</span>
 																</div>
 															</div>
@@ -251,9 +238,9 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">Region : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<input type="text" name="region" id="region" readonly
-                       												 placeholder="" class="form-control" value="<?php echo $row['region'];?>">
-																	</span>
+
+                                                                    <h5><?php echo $row['region'];?></h5>
+		
 																</div>
 															</div>
 															<div class="space-4"></div>
@@ -261,8 +248,7 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">Location : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<input type="text" name="locationS" id="locationS" 
-                       												 placeholder="" class="form-control" value="<?php echo $row['locationS'];?>">
+																	<h5><?php echo $row['locationS'];?></h5>
 																	</span>
 																</div>
 															</div>
@@ -271,13 +257,9 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">JobGrade : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="jobGrade" id="jobGrade" class="form-control">
-																		<option><?php echo $row['jobGrade'];?></option>
-																		<option>NT2</option>
-																		<option>NT3</option>
-																		<option>NT4</option>
-																		<option>NT5</option>
-																	</select>																
+
+                                                                    <h5><?php echo $row['jobGrade'];?></h5>
+																											
 																	</span>
 																</div>
 															</div>
@@ -285,8 +267,8 @@ include 'conn/dbconnection.php';
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right">Retirement Date : </label>
 																<div class="col-sm-9">
-																	<span class="input-icon input-icon-right">	
-																	<input type="date" name="retirementDate" id="retirementDate" value="<?php echo $row['retirementDate'];?>" class="form-control">					
+																	<span class="input-icon input-icon-right">		
+                                                                    <h5><?php echo $row['retirementDate'];?></h5>			
 																	</span>
 																</div>
 															</div>
@@ -295,11 +277,7 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">Status : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="statusA" id="statusA" class="form-control">
-																		<option><?php echo $row['statusA'];?></option>
-																		<option>Successor</option>
-																		<option>Certified</option>
-																	</select>																
+                                                                    <h5><?php echo $row['statusA'];?></h5>															
 																	</span>
 																</div>
 															</div>
@@ -308,11 +286,7 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">E-Learning : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="eLearning" id="eLearning" class="form-control">
-																		<option><?php echo $arr[$row['eLearning']];?></option>
-																		<option>Yes</option>
-																		<option>No</option>
-																	</select>
+                                                                    <h5><?php echo $arr[$row['eLearning']];?></h5>	
 																	</span>
 																</div>
 															</div>
@@ -321,11 +295,8 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">Heart & Minds : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="heartMind" id="heartMind" class="form-control">
-																		<option><?php echo $arr[$row['heartMind']];?></option>
-																		<option>Yes</option>
-																		<option>No</option>
-																	</select>																
+                                                                    <h5><?php echo $arr[$row['heartMind']];?></h5>	
+																																
 																	</span>
 																</div>
 															</div>
@@ -334,11 +305,7 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">DCS : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="DCS" id="DCS" class="form-control">
-																		<option><?php echo $arr[$row['DCS']];?></option>
-																		<option>Yes</option>
-																		<option>No</option>
-																	</select>
+                                                                    <h5><?php echo $arr[$row['DCS']];?></h5>	
 																	</span>
 																</div>
 															</div>
@@ -347,25 +314,16 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">OTS : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="OTS" id="OTS" class="form-control">
-																		<option><?php echo $arr[$row['OTS']];?></option>
-																		<option>Yes</option>
-																		<option>No</option>
-																	</select>
+                                                                    <h5><?php echo $arr[$row['OTS']];?></h5>
 																	</span>
 																</div>
 															</div>
 															<div class="space-4"></div>
 															<div class="form-group">
 																<label class="col-sm-3 control-label no-padding-right">Oral Interview : </label>
-
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="oralInterview" id="oralInterview" class="form-control">
-																	<option><?php echo $arr[$row['oralInterview']];?></option>
-																		<option>Yes</option>
-																		<option>No</option>
-																	</select>			
+                                                                    <h5><?php echo $arr[$row['oralInterview']];?></h5>		
 																	</span>
 																</div>
 															</div>
@@ -374,17 +332,14 @@ include 'conn/dbconnection.php';
 																<label class="col-sm-3 control-label no-padding-right">MME : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
-																	<select name="MME" id="MME" class="form-control" >	
-																		<option><?php echo $arr[$row['MME']];?></option>
-																		<option>Yes</option>
-																		<option>No</option>
-																	</select>					
+                                                                    <h5><?php echo $arr[$row['MME']];?></h5>					
 																	</span>
 																</div>
 															</div>
 															<center>
 															<div class="space-4"></div>
-																  <input name="submit" type="submit" id="submit" value="Update" />
+												
+																  <input name="delete" type="submit" id="delete" value="Delete" onclick="return confirm('Do you want to Delete the Staff ?')" />
 																	<!-- <input name="submit" type="submit" id="submit" value="Delete" /> -->
 															</div>
 															</center>

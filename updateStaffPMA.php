@@ -19,9 +19,9 @@ $arr = array('Yes'=> 1,'No'=> 0);
 	// if ($region == "PMA") {
 
 		if(isset($_POST["submit"])){
-            $sql = "call update_staffpma('".$staffID ."','".$region ."','".$trade ."','".$jobGrade ."','".$statusA ."','".$retirementDate ."','".$eLearning ."','".$heartMind ."','".$DCS ."','".$OTS ."','".$oralInterview ."','".$MME ."')";
+            // $sql = "call update_staffpma('".$staffID ."','".$region ."','".$trade ."','".$jobGrade ."','".$statusA ."','".$retirementDate ."','".$eLearning ."','".$heartMind ."','".$DCS ."','".$OTS ."','".$oralInterview ."','".$MME ."')";
 			// $sql = "call update_staffpma(trade, locationS, jobGrade, retirementDate, statusA, eLearning, heartMind, DCS, OTS, oralInterview, MME) values ('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."') WHERE  (staffID = $staffID)";
-			// $sql = "UPDATE staffpma SET (trade, locationS, jobGrade, retirementDate, statusA, eLearning, heartMind, DCS, OTS, oralInterview, MME) values ('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."') WHERE  (staffID = $staffID)";
+			$sql = "UPDATE staffpma SET (trade, jobGrade, retirementDate, statusA, eLearning, heartMind, DCS, OTS, oralInterview, MME) values (".$trade."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."') WHERE  (staffID = '".$staffID."')";
 			$result = mysqli_query($con,$sql);
 
 			if(!isset($result))
