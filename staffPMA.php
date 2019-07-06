@@ -298,14 +298,9 @@ include 'conn/dbconnection.php';
 
 														<td align="center">
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="green" href="javascript:window.open('editInfoS.php?staffID=<?php echo $row['staffID'];?>','mywindowtitle','width=800,height=700')">
+																<a class="green" href="javascript:window.open('viewPMA.php?staffID=<?php echo $row['staffID'];?>','mywindowtitle','width=800,height=700')">
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>															
-															</div>
-															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="red" href="javascript:window.open('deleteInfoPMA.php?staff_ID=<?php echo $row['staffID'];?>','mywindowtitle','width=800,height=700')">
-																	<i class="ace-icon fa fa-trash bigger-130"></i>
-																</a>
 															</div>
 														</td>																			
 													</tr>

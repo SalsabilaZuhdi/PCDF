@@ -11,7 +11,7 @@ include 'conn/dbconnection.php';
 	
 @$staffID = $_POST['staffID'];
 
-	$select = "call select_resetPassS('".$_REQUEST['staffID']."')";
+	$select = "call view_staffskoil('".$_REQUEST['staffID']."')";
 	$pcdf_select =mysqli_query($dba,$select) or die (mysqli_error());
 	mysqli_next_result($dba);
 	$row = mysqli_fetch_array($pcdf_select);
@@ -27,7 +27,7 @@ include 'conn/dbconnection.php';
 		$MME=$arr2[$_REQUEST['MME']];
 
 			// $update = "call update_staffpma('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
-			$update = "call update_staffpma('".$_REQUEST['staffID']."','".$_REQUEST['staffName']."','".$_REQUEST['trade']."','".$_REQUEST['region']."','".$_REQUEST['locationS']."','".$_REQUEST['jobGrade']."','".$_REQUEST['retirementDate']."','".$_REQUEST['statusA']."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
+			$update = "call update_staffskoil('".$_REQUEST['staffID']."','".$_REQUEST['staffName']."','".$_REQUEST['trade']."','".$_REQUEST['region']."','".$_REQUEST['locationS']."','".$_REQUEST['jobGrade']."','".$_REQUEST['retirementDate']."','".$_REQUEST['statusA']."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
 			$essms_update = mysqli_query($dba,$update);
 			mysqli_next_result($dba);
 		  
@@ -42,6 +42,26 @@ include 'conn/dbconnection.php';
 			} else {
 				echo "<script> alert('Unsuccessful. Please try again!')
 				window.close()</script>";
+			}
+	}
+
+		if(isset($_REQUEST['delete']))	{
+
+			$delete = "call delete_staffskoil('".$_REQUEST['staffID']."')";
+			$essms_delete = mysqli_query($dba,$delete);
+			mysqli_next_result($dba);
+		
+			if ($essms_delete) {
+				echo "<script>alert('Staff has been deleted!')</script>";
+				echo "<script>
+				window.onunload = refreshParent;
+				function refreshParent() {
+				window.opener.location.reload(); }
+				window.close()
+				</script>";
+			} else {
+				echo "<script> alert('Unsuccessful. Please try again!')</script>";
+				echo '<META HTTP-EQUIV="Refresh" CONTENT="0.01; URL=editInfoS.php">';
 			}
 	}
 ?>
@@ -386,6 +406,7 @@ include 'conn/dbconnection.php';
 															<div class="space-4"></div>
 																  <input name="submit" type="submit" id="submit" value="Update" />
 																	<!-- <input name="submit" type="submit" id="submit" value="Delete" /> -->
+																	<input name="delete" type="submit" id="delete" value="Delete" onclick="return confirm('Do you want to delete the Staff ?')" />
 															</div>
 															</center>
 															</form>
