@@ -158,15 +158,10 @@ include 'conn/dbconnection.php';
 						 <?php
 						 if(isset($_REQUEST['search']))
 						 {
-							@$jobGrade1=$_POST['jobGrade1'];
-							@$jobGrade2=$_POST['jobGrade2'];
-							@$jobGrade3=$_POST['jobGrade3'];
-							@$jobGrade4=$_POST['jobGrade4'];
-							@$jobGrade5=$_POST['jobGrade5'];
-		
-							$query=mysqli_query($dba,"call select_staffskoil('".$jobGrade1."','".$jobGrade2."','".$jobGrade3."','".$jobGrade4."','".$jobGrade5."')") or die();	
-							mysqli_next_result($dba);
-								
+							 $name=$_REQUEST['name'];
+							 $sql = "SELECT * FROM staffskoil WHERE staffName LIKE '%".$name."%'";
+							 $query=mysqli_query($dba,$sql) or die();	
+							 mysqli_next_result($dba);
 						 }
 						else
 						{
@@ -200,28 +195,21 @@ include 'conn/dbconnection.php';
 							<div class="col-xs-12">
 							<div class="tab-content profile-edit-tab-content">
 		                            <div id="edit-basic" class="tab-pane in active">
-									<form class="form-horizontal" role="form" method="post" >
+									<form class="form-horizontal" action="" method="post">
+										<div class="form-group">	
+											<table width="689">
 												<div class="form-group">
-										
-								        	<table width="689">
-									<tr>
-										<td width="135">Job Grade</td>
-										<td width="10">:</td>
-										<td width="126"><input type="checkbox" name="jobGrade1" value="NT1" <?php if(isset($_POST['jobGrade1'])) echo "checked='checked'"; ?>>NT1</td>
-										<td width="101"><input type="checkbox" name="jobGrade2" value="NT2" <?php if(isset($_POST['jobGrade2'])) echo "checked='checked'"; ?>>NT2</td>
-										<td width="158"><input type="checkbox" name="jobGrade3" value="NT3" <?php if(isset($_POST['jobGrade3'])) echo "checked='checked'"; ?>>NT3</td>
-										
-									 </tr>
-									<tr>
-										<td align="left">&nbsp;</td>
-										<td>:</td>
-										<td><input type="checkbox" name="jobGrade4" value="NT4" <?php if(isset($_POST['jobGrade4'])) echo "checked='checked'"; ?>>NT4</td>
-										<td colspan="4"><input type="checkbox" name="jobGrade5" value="NT5" <?php if(isset($_POST['jobGrade5'])) echo "checked='checked'"; ?>>NT5</td>
-									
-									</tr>
-									</table>
-									  <input name="search" type="submit" id="search" value="Search" />
-									  </div>
+													<label for="staffName" class="col-sm-2 control-label">Staff Name</label>
+													<div class="col-sm-4">
+														<input type="text" name="name" id="name" placeholder="" class="form-control" autofocus required>
+														<!-- <span class="help-block"></span> -->
+													</div>
+													<div class="col-sm-4">
+														<input name="search" type="submit" id="search" value="Search" />
+													</div>
+												</div>
+											</table>
+										</div>
 									</form>
 									
 									</div>
