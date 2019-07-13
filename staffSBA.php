@@ -158,11 +158,11 @@ include 'conn/dbconnection.php';
 						 <?php
 						 if(isset($_REQUEST['search']))
 						 {
-								  @$course1=$_POST['jobGrade1'];
-								  @$course2=$_POST['jobGrade2'];
-								  @$course3=$_POST['jobGrade3'];
-								  @$course4=$_POST['jobGrade4'];
-								  @$course5=$_POST['jobGrade5'];
+							@$jobGrade1=$_POST['jobGrade1'];
+							@$jobGrade2=$_POST['jobGrade2'];
+							@$jobGrade3=$_POST['jobGrade3'];
+							@$jobGrade4=$_POST['jobGrade4'];
+							@$jobGrade5=$_POST['jobGrade5'];
 		
 							$query=mysqli_query($dba,"call select_staffsba('".$jobGrade1."','".$jobGrade2."','".$jobGrade3."','".$jobGrade4."','".$jobGrade5."')") or die();	
 							mysqli_next_result($dba);
@@ -170,10 +170,25 @@ include 'conn/dbconnection.php';
 						 }
 						else
 						{
-							$query=mysqli_query($dba,"call select_staffsba2") or die();
+							@$jobGrade1=$_POST['jobGrade1'];
+							@$jobGrade2=$_POST['jobGrade2'];
+							@$jobGrade3=$_POST['jobGrade3'];
+							@$jobGrade4=$_POST['jobGrade4'];
+							@$jobGrade5=$_POST['jobGrade5'];
+
+							$query=mysqli_query($dba,"call select_staffsba('".$jobGrade1."','".$jobGrade2."','".$jobGrade3."','".$jobGrade4."','".$jobGrade5."')") or die();
 							mysqli_next_result($dba);
 						}
 						
+						if(isset($_REQUEST['delete']))
+						{
+						   mysqli_query($dba,"call delete_all_staffsba") or die();	
+						   $result=mysqli_next_result($dba);
+							echo "<script type=\"text/javascript\">
+							alert(\"All data succesfully deleted\");
+							window.location = \"staffSBA.php\"
+							</script>";		   
+						}
 						 
 						?> 
 	<div class="page-header">
@@ -254,7 +269,6 @@ include 'conn/dbconnection.php';
 								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-										
 														<th>No. </th>
 														<th>Staff ID</th>
 														<th>Staff Name</th>
@@ -314,6 +328,17 @@ include 'conn/dbconnection.php';
 													<?php };?>
 													</tbody>
 		                                           </table>
+
+												    <!-- Form Name -->
+								 					<legend>Delete All Data</legend>
+
+													<!-- File Button -->
+													<div class="form-group">
+														<div class="col-md-4">
+														<button type="submit" id="delete" name="delete" class="btn btn-danger"  onclick="return confirm('Do you want to delete all SBA staff ?')">Delete</button>
+														</div>
+													</div>
+
 
 								</form>
 													

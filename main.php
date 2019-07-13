@@ -529,7 +529,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>Oral Interview</td>
+															<td>OTS</td>
 															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -540,7 +540,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>OTS</td>
+															<td>Oral Interview</td>
 															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -639,7 +639,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>Oral Interview</td>
+															<td>OTS</td>
 															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -650,7 +650,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>OTS</td>
+															<td>Oral Interview</td>
 															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -751,7 +751,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>Oral Interview</td>
+															<td>OTS</td>
 															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -762,7 +762,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>OTS</td>
+															<td>Oral Interview</td>
 															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -861,7 +861,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>Oral Interview</td>
+															<td>OTS</td>
 															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
 															</tr>
 														  <?php };?>
@@ -872,7 +872,7 @@ $id = $_SESSION['id'];
 															{
 															?>
 															<tr>
-															<td>OTS</td>
+															<td>Oral Interview</td>
 															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
 															</tr>
 														  <?php };?>

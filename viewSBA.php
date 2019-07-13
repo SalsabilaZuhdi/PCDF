@@ -288,7 +288,7 @@ include 'conn/dbconnection.php';
 															</div>
 															<div class="space-4"></div>
 															<div class="form-group">
-																<label class="col-sm-3 control-label no-padding-right">JobGrade : </label>
+																<label class="col-sm-3 control-label no-padding-right">Job Grade : </label>
 																<div class="col-sm-9">
 																	<span class="input-icon input-icon-right">
 																	<select name="jobGrade" id="jobGrade" class="form-control">
