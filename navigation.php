@@ -171,7 +171,7 @@
 
 						<b class="arrow"></b>
 					</li>
-					<!-- supervisor  -->
+					<!-- Admin SKOIL  -->
 					<?php }
 					else if (@$_SESSION['position'] == "3" )
 					{ ?>
@@ -183,29 +183,11 @@
 
 						<b class="arrow"></b>
 					</li>
-					
-					<li class="">
-						<a href="profile.php">
-							<i class="menu-icon fa fa-user"></i>
-							<span class="menu-text"> My Profile </span>
-						</a>
 
-						<b class="arrow"></b>
-					</li>
-					
-					<li class="">
-						<a href="appointmentSupervisor.php">
-							<i class="menu-icon fa fa-calendar-o "></i>
-							<span class="menu-text"> Appointment </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> List of Student </span>
+                    <li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-group "></i>
+							<span class="menu-text"> Staff </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -214,15 +196,31 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="listStudent_Supervise.php">
+								<a href="addStaff.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Supervise
+									Add New Staff
 								</a>
-
+								<b class="arrow"></b>
+							</li>
+							<li class="">
+								<a href="staffSKOIL.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									SKOIL
+								</a>
 								<b class="arrow"></b>
 							</li>
 						</ul>
 					</li>
+
+					<li class="">
+						<a href="dataAnalysis.php">
+							<i class="menu-icon fa fa-bar-chart"></i>
+							<span class="menu-text"> Data Analysis </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+
 					<li class="">
 						<a href="changePassword.php">
 							<i class="menu-icon fa fa-lock"></i>
@@ -231,10 +229,11 @@
 
 						<b class="arrow"></b>
 					</li>	
+
 					<li class="">
 						<a href="logout.php">
 							<i class="menu-icon fa fa-sign-out"></i>
-							<span class="menu-text"> Sign Out </span>
+							<span class="menu-text"> Log Out </span>
 						</a>
 
 						<b class="arrow"></b>

@@ -1177,15 +1177,15 @@ $id = $_SESSION['id'];
 								
 								<?php } else if(@$_SESSION['position'] == "3" ) { ?>
 								
-								<!-- PAGE CONTENT BEGINS (SUPERVISOR) -->
-			    			    <h1>Welcome to page e-SSMS</h1><br/>
+									<!-- PAGE CONTENT BEGINS (ADMIN SKOIL) -->
+								<h1>Welcome to PCDF</h1></br>
 								<div class="row">
-									<div class="col-sm-10">
+									<div class="col-sm-5">
 										<div class="widget-box transparent">
 											<div class="widget-header widget-header-flat">
 												<h4 class="widget-title lighter">
-													<i class="ace-icon fa fa-list pink"></i>
-													Student to Supervise 
+													<i class="ace-icon fa fa-star orange"></i>
+													Total Panelman 
 												</h4>
 
 												<div class="widget-toolbar">
@@ -1197,172 +1197,260 @@ $id = $_SESSION['id'];
 
 											<div class="widget-body">
 												<div class="widget-main no-padding">
-												<?php
-											 $select = "call select_dashboard_student('".$id."')";
+											<?php
+											 $selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil";
 											?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
 															<tr>
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Matric Number
+																	<i class="ace-icon fa fa-caret-right blue"></i>Region
 																</th>
 
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Student Name
-																</th>
-																	<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Project Title
-																</th>
-																	<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Course
-																</th>
-																	<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Workshop
-																</th>
-																	<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Email
-																</th>
-																	<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Phone Number
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
 																</th>
 															</tr>
-														</thead>
-														
+														</thead>													
+														<tbody>
 															<?php
-															$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
+															$essms_select =mysqli_query($dba,$selectSKOIL) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
 															{
 															?>
-														<tbody>
-														
-														
 															<tr>
-																<td><?php echo $row['matricNum'];?></td>
-																<td><?php echo $row['studentName'];?></td>
-																<td><font color="red"><?php echo $row['title'];?></font></td>
-																<td><?php echo $row['course'];?></td>
-																<td align="center"><?php echo $row['typeOfWorkshop'];?></td>
-																<td><?php echo $row['studentEmail'];?></td>
-																<td><?php echo $row['studentPhoneNum'];?></td>
-															
-																	
-																
+															<td>SK OIL</td>
+																<td><b class="black"><?php echo $row['totalSKOIL'];?></b></td>
 															</tr>
+															<?php };?>
 														</tbody>
-														  <?php };?>
 													</table>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
-									<div class="vspace-12-sm"></div>
-								</div><!-- /.row -->
-
-								<div class="hr hr32 hr-dotted"></div>
-
-								<div class="row">
-									<div class="col-sm-7">
+									<div class="row">
+									<div class="col-sm-5">
 										<div class="widget-box transparent">
 											<div class="widget-header widget-header-flat">
 												<h4 class="widget-title lighter">
-													<i class="ace-icon  fa fa-calendar-o orange"></i>
-													Pending Appointment 
+													<i class="ace-icon fa fa-star orange"></i>
+													Total SK OIL <span class="label label-danger">Elements</span>
 												</h4>
-
 												<div class="widget-toolbar">
 													<a href="#" data-action="collapse">
 														<i class="ace-icon fa fa-chevron-up"></i>
 													</a>
 												</div>
 											</div>
-
 											<div class="widget-body">
 												<div class="widget-main no-padding">
 												<?php
-											 $select = "SELECT * FROM appointment LEFT JOIN student ON appointment.matricNum = student.matricNum where appointment.staffid= '".$id."' AND status='Pending Approval'";
-											?>
+													$selectLearning = "SELECT staffID, count(*) as totalLearning FROM staffskoil  where eLearning = 1";
+													$selectHeartMind = "SELECT staffID, count(*) as totalHeartMind FROM staffskoil  where heartMind = 1";
+													$selectDCS = "SELECT staffID, count(*) as totalDCS FROM staffskoil  where DCS = 1";
+													$selectOTS = "SELECT staffID, count(*) as totalOTS FROM staffskoil  where OTS = 1";
+													$selectInterview = "SELECT staffID, count(*) as totalInterview FROM staffskoil  where oralInterview = 1";
+													$selectMME = "SELECT staffID, count(*) as totalMME FROM staffskoil  where MME = 1";
+												?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
 															<tr>
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Date 
+																	<i class="ace-icon fa fa-caret-right blue"></i>Elements
 																</th>
 
 																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Time
-																</th>
-																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Agenda 
-																</th>
-
-																<th>
-																	<i class="ace-icon fa fa-caret-right blue"></i>Student Name
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
 																</th>
 															</tr>
 														</thead>
 														
-
 														<tbody>
 															<?php
-															$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
+															$essms_select =mysqli_query($dba,$selectLearning) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
 															{
-																$originalDate =  $row['start'];
-																$newDate = date("d/m/Y", strtotime($originalDate));
 															?>
-														
 															<tr>
-																    <td><?php echo $newDate;?></td>
-																	<td><?php echo $row['start_time'];?></td>
-																	<td><?php echo $row['title'];?></td>
-																	<td><?php echo $row['studentName'];?></td>
-						
+															<td>E-Learning</td>
+															<td><b class="red"><?php echo $row['totalLearning'];?></b></td>
 															</tr>
-														</tbody>
 														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectHeartMind) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Heart & Minds</td>
+															<td><b class="red"><?php echo $row['totalHeartMind'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectDCS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>DCS</td>
+															<td><b class="red"><?php echo $row['totalDCS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectOTS) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>OTS</td>
+															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectInterview) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>Oral Interview</td>
+															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
+															</tr>
+														  <?php };?>
+														  <?php
+															$essms_select =mysqli_query($dba,$selectMME) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>MME</td>
+															<td><b class="red"><?php echo $row['totalMME'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
 													</table>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
-									<?php
-											$countsql ="call select_totalAppointment('".$id."')";
-											$essms_countsql =mysqli_query($dba,$countsql) or die (mysqli_error());
-											mysqli_next_result($dba);
-											$countstatus = mysqli_fetch_array($essms_countsql);
-									?>
-							<div class="col-sm-5">
-							<div class="widget-box ">
-								<div class="widget-header">
-								<h4>Summary of Appointment</h4>
-								</div>
-
-										<div >
-												<div class="external-event label-yellow" data-class="label-yellow" style="background-color:yellow">
-												<i class="ace-icon fa "><?php echo $countstatus['totalpending']; ?></i>
-												Pending Approval
-										</div>
-												<div class="external-event label-success" data-class="label-success" style="background-color:green">
-												<i class="ace-icon fa "><?php echo $countstatus['totalaccept']; ?></i>
-												Accepted Appointment
-										</div>
-										<div class="external-event label-danger" data-class="label-danger" style="background-color:red">
-											<i class="ace-icon fa "><?php echo $countstatus['totalreject']; ?></i>
-											Rejected Appointment
-										</div>
-									
-									</div>
-								</div><!-- /.widget-box -->
-									</div><!-- /.col -->
 								</div><!-- /.row -->
 
 								<div class="hr hr32 hr-dotted"></div>
-
-
-								<!-- PAGE CONTENT ENDS (SUPERVISOR) -->
 								
+
+								<div class="row">
+									<div class="col-sm-5">
+										<div class="widget-box transparent">
+											<div class="widget-header widget-header-flat">
+												<h4 class="widget-title lighter">
+													<i class="ace-icon fa fa-star orange"></i>
+													Total Panelman <span class="label label-success arrowed-in arrowed-in-right">Certified</span>
+												</h4>
+
+												<div class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+												</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+												<?php
+														$selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil where statusA ='Certified'";
+												?>
+													<table class="table table-bordered table-striped">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Region
+																</th>
+
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
+																</th>
+															</tr>
+														</thead>
+														
+														<tbody>
+															<?php
+															$essms_select =mysqli_query($dba,$selectSKOIL) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SK OIL</td>
+															<td><b class="green"><?php echo $row['totalSKOIL'];?></b></td>
+															</tr>
+														  <?php };?>
+														  </tbody>
+													</table>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										</div><!-- /.widget-box -->
+									</div><!-- /.col -->
+									<div class="col-sm-5">
+										<div class="widget-box transparent">
+											<div class="widget-header widget-header-flat">
+												<h4 class="widget-title lighter">
+													<i class="ace-icon fa fa-star orange"></i>
+													Total Panelman 	<span class="label label-primary arrowed-in arrowed-in-right">Successor</span>
+												</h4>
+
+												<div class="widget-toolbar">
+													<a href="#" data-action="collapse">
+														<i class="ace-icon fa fa-chevron-up"></i>
+													</a>
+												</div>
+											</div>
+
+											<div class="widget-body">
+												<div class="widget-main no-padding">
+												<?php
+											//  $select = "call select_dashboard_assigned";
+											$selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil where statusA ='Successor'";
+											?>
+													<table class="table table-bordered table-striped">
+														<thead class="thin-border-bottom">
+															<tr>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Region 
+																</th>
+
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Total
+																</th>
+															</tr>
+														</thead>														
+														<tbody>
+														<?php
+															$essms_select =mysqli_query($dba,$selectSKOIL) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{
+															?>
+															<tr>
+															<td>SK OIL</td>
+															<td><b class="blue"><?php echo $row['totalSKOIL'];?></b></td>
+															</tr>
+														  <?php };?>
+														</tbody>
+													</table>
+												</div><!-- /.widget-main -->
+											</div><!-- /.widget-body -->
+										</div><!-- /.widget-box -->
+									</div><!-- /.col -->
+								</div><!-- /.row -->
+								<div class="hr hr32 hr-dotted"></div>
+								
+								<!-- PAGE CONTENT ENDS (ADMIN SKOIL) -->
 								
 								<?php }else if(@$_SESSION['position'] == "4" ) { ?>
 								<!-- PAGE CONTENT BEGINS (STUDENT) -->
