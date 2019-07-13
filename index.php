@@ -33,7 +33,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					  	<select name="position" id="position" class="dropdown-select" required>
                             <option value="">-- Please Choose --</option>
                             <option value="1">Super Admin</option>
-							<option value="2">Admin Region</option>
+							<option value="2">Admin PMA</option>
+							<option value="3">Admin SKOIL</option>
+							<option value="4">Admin SKGAS</option>
+							<option value="5">Admin SBA</option>
 					 	 </select>
 					</div>
 				 </section>
