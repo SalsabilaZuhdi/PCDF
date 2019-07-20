@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="footer">
 			<!--<p>&copy 2019 pcdf <a href="http://w3layouts.com">.</a></p>-->
-		</div>-->
+		</div>
 	<!-- //main -->
 </body>
 </html>

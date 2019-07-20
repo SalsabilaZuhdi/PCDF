@@ -78,15 +78,6 @@
 					</li>
 
 					<li class="">
-						<a href="dataAnalysis.php">
-							<i class="menu-icon fa fa-bar-chart"></i>
-							<span class="menu-text"> Data Analysis </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
 						<a href="changePassword.php">
 							<i class="menu-icon fa fa-lock"></i>
 							<span class="menu-text"> Change Password </span>
@@ -146,15 +137,6 @@
 					</li>
 
 					<li class="">
-						<a href="dataAnalysis.php">
-							<i class="menu-icon fa fa-bar-chart"></i>
-							<span class="menu-text"> Data Analysis </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
 						<a href="changePassword.php">
 							<i class="menu-icon fa fa-lock"></i>
 							<span class="menu-text"> Change Password </span>
@@ -210,15 +192,6 @@
 								<b class="arrow"></b>
 							</li>
 						</ul>
-					</li>
-
-					<li class="">
-						<a href="dataAnalysis.php">
-							<i class="menu-icon fa fa-bar-chart"></i>
-							<span class="menu-text"> Data Analysis </span>
-						</a>
-
-						<b class="arrow"></b>
 					</li>
 
 					<li class="">
@@ -281,15 +254,6 @@
 					</li>
 
 					<li class="">
-						<a href="dataAnalysis.php">
-							<i class="menu-icon fa fa-bar-chart"></i>
-							<span class="menu-text"> Data Analysis </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
 						<a href="changePassword.php">
 							<i class="menu-icon fa fa-lock"></i>
 							<span class="menu-text"> Change Password </span>
@@ -347,15 +311,6 @@
 								<b class="arrow"></b>
 							</li>
 						</ul>
-					</li>
-
-					<li class="">
-						<a href="dataAnalysis.php">
-							<i class="menu-icon fa fa-bar-chart"></i>
-							<span class="menu-text"> Data Analysis </span>
-						</a>
-
-						<b class="arrow"></b>
 					</li>
 
 					<li class="">

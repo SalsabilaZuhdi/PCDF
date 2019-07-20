@@ -212,7 +212,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 																<td>PMA</td>
-																<td><b class="black"><?php echo $row['totalPMA'];?></b></td>
+																<td><b class="black"><?php echo $total1=$row['totalPMA'];?></b></td>
 															</tr>
 															<?php };?>
 															<?php
@@ -223,7 +223,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 																<td>SK OIL</td>
-																<td><b class="black"><?php echo $row['totalSKOIL'];?></b></td>
+																<td><b class="black"><?php echo $total2=$row['totalSKOIL'];?></b></td>
 															</tr>
 															<?php };?>
 															<?php
@@ -234,7 +234,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 																<td>SK GAS</td>
-																<td><b class="black"><?php echo $row['totalSKGAS'];?></b></td>
+																<td><b class="black"><?php echo $total3=$row['totalSKGAS'];?></b></td>
 															</tr>
 															<?php };?>
 															<?php
@@ -245,9 +245,13 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 																<td>SBA</td>
-																<td><b class="black"><?php echo $row['totalSBA'];?></b></td>
+																<td><b class="black"><?php echo $total4=$row['totalSBA'];?></b></td>
 															</tr>
 															<?php };?>
+															<tr>
+																<td><b>Total All Panelman</b></td>
+																<td><b class="black"><?php echo $total1+$total2+$total3+$total4?></b></td>
+															</tr>
 														</tbody>
 													
 													</table>
@@ -296,6 +300,7 @@ $id = $_SESSION['id'];
 													$selectSKOIL = "SELECT staffID, count(*) as totalSKOIL FROM staffskoil where statusA ='Certified'";
 													$selectSKGAS = "SELECT staffID, count(*) as totalSKGAS FROM staffskgas where statusA ='Certified'";
 													$selectSBA = "SELECT staffID, count(*) as totalSBA FROM staffsba where statusA ='Certified'";
+													// $selectALL= $selectPMA+$selectSKOIL
 												?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
@@ -319,7 +324,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>PMA</td>
-															<td><b class="green"><?php echo $row['totalPMA'];?></b></td>
+															<td><b class="green"><?php echo $totalPMA=$row['totalPMA'];?></b></td>
 															</tr>
 														  <?php };?>
 														  <?php
@@ -330,7 +335,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>SK OIL</td>
-															<td><b class="green"><?php echo $row['totalSKOIL'];?></b></td>
+															<td><b class="green"><?php echo $totalSKOIL=$row['totalSKOIL'];?></b></td>
 															</tr>
 														  <?php };?>
 														  <?php
@@ -341,7 +346,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>SK GAS</td>
-															<td><b class="green"><?php echo $row['totalSKGAS'];?></b></td>
+															<td><b class="green"><?php echo $totalSKGAS=$row['totalSKGAS'];?></b></td>
 															</tr>
 														  <?php };?>
 														  <?php
@@ -352,9 +357,13 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>SBA</td>
-															<td><b class="green"><?php echo $row['totalSBA'];?></b></td>
+															<td><b class="green"><?php echo $totalSBA=$row['totalSBA'];?></b></td>
 															</tr>
 														  <?php };?>
+															<tr>
+															<td><b>Total All Certified</b></td>
+															<td><b class="green"><?php echo $totalSBA+$totalSKGAS+$totalSKOIL+$totalPMA?></b></td>
+															</tr>
 														  </tbody>
 													</table>
 												</div><!-- /.widget-main -->
@@ -406,7 +415,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>PMA</td>
-															<td><b class="blue"><?php echo $row['totalPMA'];?></b></td>
+															<td><b class="blue"><?php echo $totalPMA2=$row['totalPMA'];?></b></td>
 															</tr>
 														  <?php };?>
 														  <?php
@@ -417,7 +426,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>SK OIL</td>
-															<td><b class="blue"><?php echo $row['totalSKOIL'];?></b></td>
+															<td><b class="blue"><?php echo $totalSKOIL2=$row['totalSKOIL'];?></b></td>
 															</tr>
 														  <?php };?>
 														  <?php
@@ -428,7 +437,7 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>SK GAS</td>
-															<td><b class="blue"><?php echo $row['totalSKGAS'];?></b></td>
+															<td><b class="blue"><?php echo $totalSKGAS2=$row['totalSKGAS'];?></b></td>
 															</tr>
 														  <?php };?>
 														  <?php
@@ -439,9 +448,13 @@ $id = $_SESSION['id'];
 															?>
 															<tr>
 															<td>SBA</td>
-															<td><b class="blue"><?php echo $row['totalSBA'];?></b></td>
+															<td><b class="blue"><?php echo $totalSBA2=$row['totalSBA'];?></b></td>
 															</tr>
 														  <?php };?>
+															<tr>
+															<td><b>Total All Successor</b></td>
+															<td><b class="blue"><?php echo $totalSBA2+$totalSKGAS2+$totalSKOIL2+$totalPMA2?></b></td>
+															</tr>
 														</tbody>
 													</table>
 												</div><!-- /.widget-main -->
@@ -468,12 +481,23 @@ $id = $_SESSION['id'];
 											<div class="widget-body">
 												<div class="widget-main no-padding">
 												<?php
-													$selectLearning = "SELECT staffID, count(*) as totalLearning FROM staffpma  where eLearning = 1";
-													$selectHeartMind = "SELECT staffID, count(*) as totalHeartMind FROM staffpma  where heartMind = 1";
-													$selectDCS = "SELECT staffID, count(*) as totalDCS FROM staffpma  where DCS = 1";
-													$selectOTS = "SELECT staffID, count(*) as totalOTS FROM staffpma  where OTS = 1";
-													$selectInterview = "SELECT staffID, count(*) as totalInterview FROM staffpma  where oralInterview = 1";
-													$selectMME = "SELECT staffID, count(*) as totalMME FROM staffpma  where MME = 1";
+													$selectLearning1 = "SELECT staffID, count(*) as totalLearning1 FROM staffpma  where eLearning = 1 AND statusA='Certified'";
+													$selectLearning2 = "SELECT staffID, count(*) as totalLearning2 FROM staffpma  where eLearning = 1 AND statusA='Successor'";
+
+													$selectHeartMind1 = "SELECT staffID, count(*) as totalHeartMind1 FROM staffpma  where heartMind = 1 AND statusA='Certified'";
+													$selectHeartMind2 = "SELECT staffID, count(*) as totalHeartMind2 FROM staffpma  where heartMind = 1 AND statusA='Successor'";
+
+													$selectDCS1 = "SELECT staffID, count(*) as totalDCS1 FROM staffpma  where DCS = 1 AND statusA='Certified'";
+													$selectDCS2 = "SELECT staffID, count(*) as totalDCS2 FROM staffpma  where DCS = 1 AND statusA='Successor'";
+
+													$selectOTS1 = "SELECT staffID, count(*) as totalOTS1 FROM staffpma  where OTS = 1 AND statusA='Certified'";
+													$selectOTS2 = "SELECT staffID, count(*) as totalOTS2 FROM staffpma  where OTS = 1 AND statusA='Successor'";
+
+													$selectInterview1 = "SELECT staffID, count(*) as totalInterview1 FROM staffpma  where oralInterview = 1 AND statusA='Certified'";
+													$selectInterview2 = "SELECT staffID, count(*) as totalInterview2 FROM staffpma  where oralInterview = 1 AND statusA='Successor'";
+
+													$selectMME1 = "SELECT staffID, count(*) as totalMME1 FROM staffpma  where MME = 1 AND statusA='Certified'";
+													$selectMME2 = "SELECT staffID, count(*) as totalMME2 FROM staffpma  where MME = 1 AND statusA='Successor'";
 												?>
 													<table class="table table-bordered table-striped">
 														<thead class="thin-border-bottom">
@@ -481,7 +505,12 @@ $id = $_SESSION['id'];
 																<th>
 																	<i class="ace-icon fa fa-caret-right blue"></i>Elements
 																</th>
-
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Certified
+																</th>
+																<th>
+																	<i class="ace-icon fa fa-caret-right blue"></i>Successor
+																</th>
 																<th>
 																	<i class="ace-icon fa fa-caret-right blue"></i>Total
 																</th>
@@ -490,71 +519,121 @@ $id = $_SESSION['id'];
 														
 														<tbody>
 															<?php
-															$essms_select =mysqli_query($dba,$selectLearning) or die (mysqli_error());
+															$essms_select =mysqli_query($dba,$selectLearning1) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-															<tr>
-															<td>E-Learning</td>
-															<td><b class="red"><?php echo $row['totalLearning'];?></b></td>
-															</tr>
-														  <?php };?>
-														  <?php
-															$essms_select =mysqli_query($dba,$selectHeartMind) or die (mysqli_error());
+																{ ?>
+																<tr>
+																	<td>E-Learning</td>
+																	<td><b class="green"><?php echo $learning1=$row['totalLearning1'];?></b></td>
+																<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectLearning2) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-															<tr>
-															<td>Heart & Minds</td>
-															<td><b class="red"><?php echo $row['totalHeartMind'];?></b></td>
-															</tr>
-														  <?php };?>
-														  <?php
-															$essms_select =mysqli_query($dba,$selectDCS) or die (mysqli_error());
+															{ ?>
+																	<td><b class="blue"><?php echo $learning2=$row['totalLearning2'];?></b></td>
+																	<td><b class="red"><?php echo $totalLearning=$learning1+$learning2?></b></td>
+																</tr>
+															<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectHeartMind1) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-															<tr>
-															<td>DCS</td>
-															<td><b class="red"><?php echo $row['totalDCS'];?></b></td>
-															</tr>
-														  <?php };?>
-														  <?php
-															$essms_select =mysqli_query($dba,$selectOTS) or die (mysqli_error());
+																{ ?>
+																<tr>
+																	<td>Heart & Minds</td>
+																	<td><b class="green"><?php echo $heart1=$row['totalHeartMind1'];?></b></td>
+																<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectHeartMind2) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-															<tr>
-															<td>OTS</td>
-															<td><b class="red"><?php echo $row['totalOTS'];?></b></td>
-															</tr>
-														  <?php };?>
-														  <?php
-															$essms_select =mysqli_query($dba,$selectInterview) or die (mysqli_error());
+															{ ?>
+																	<td><b class="blue"><?php echo $heart2=$row['totalHeartMind2'];?></b></td>
+																	<td><b class="red"><?php echo $totalHeart=$heart1+$heart2?></b></td>
+																</tr>
+															<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectDCS1) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-															<tr>
-															<td>Oral Interview</td>
-															<td><b class="red"><?php echo $row['totalInterview'];?></b></td>
-															</tr>
-														  <?php };?>
-														  <?php
-															$essms_select =mysqli_query($dba,$selectMME) or die (mysqli_error());
+																{ ?>
+																<tr>
+																	<td>DCS</td>
+																	<td><b class="green"><?php echo $DCS1=$row['totalDCS1'];?></b></td>
+																<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectDCS2) or die (mysqli_error());
 															mysqli_next_result($dba);
 															while($row=mysqli_fetch_assoc($essms_select))
-															{
-															?>
-															<tr>
-															<td>MME</td>
-															<td><b class="red"><?php echo $row['totalMME'];?></b></td>
-															</tr>
-														  <?php };?>
+															{ ?>
+																	<td><b class="blue"><?php echo $DCS2=$row['totalDCS2'];?></b></td>
+																	<td><b class="red"><?php echo $totalDCS=$DCS1+$DCS2?></b></td>
+																</tr>
+															<?php };?>
+														  
+															<?php
+															$essms_select =mysqli_query($dba,$selectOTS1) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+																{ ?>
+																<tr>
+																	<td>OTS</td>
+																	<td><b class="green"><?php echo $OTS1=$row['totalOTS1'];?></b></td>
+																<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectOTS2) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{ ?>
+																	<td><b class="blue"><?php echo $OTS2=$row['totalOTS2'];?></b></td>
+																	<td><b class="red"><?php echo $totalOTS=$OTS1+$OTS2?></b></td>
+																</tr>
+															<?php };?>
+														  
+															<?php
+															$essms_select =mysqli_query($dba,$selectInterview1) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+																{ ?>
+																<tr>
+																	<td>Oral Interview</td>
+																	<td><b class="green"><?php echo $interview1=$row['totalInterview1'];?></b></td>
+																<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectInterview2) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{ ?>
+																	<td><b class="blue"><?php echo $interview2=$row['totalInterview2'];?></b></td>
+																	<td><b class="red"><?php echo $totalInterview=$interview1+$interview2?></b></td>
+																</tr>
+															<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectMME1) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+																{ ?>
+																<tr>
+																	<td>MME</td>
+																	<td><b class="green"><?php echo $MME1=$row['totalMME1'];?></b></td>
+																<?php };?>
+															<?php
+															$essms_select =mysqli_query($dba,$selectMME2) or die (mysqli_error());
+															mysqli_next_result($dba);
+															while($row=mysqli_fetch_assoc($essms_select))
+															{ ?>
+																	<td><b class="blue"><?php echo $MME2=$row['totalMME2'];?></b></td>
+																	<td><b class="red"><?php echo $totalMME=$MME1+$MME2?></b></td>
+																</tr>
+															<?php };?>														
+															<!-- <tr>
+															<td><b>Grand Total</b></td>
+															<td><b class="green"><?php echo $learning1 + $heart1 + $DCS1 + $OTS1 + $interview1 + $MME1?></b></td>
+															<td><b class="blue"><?php echo $learning2 + $heart2 + $DCS2 + $OTS2 + $interview2 + $MME2?></b></td>
+															<td><b class="black"><?php echo $totalLearning + $totalHeart + $totalDCS + $totalOTS + $totalInterview + $totalMME?></b></td>
+															</tr> -->
 														  </tbody>
 													</table>
 												</div><!-- /.widget-main -->

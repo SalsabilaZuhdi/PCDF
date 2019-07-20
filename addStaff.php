@@ -243,7 +243,7 @@ function checkPass()
 					  </div><!-- /.ace-settings-container -->
 						<div class="page-header">
 							<h1>
-								Staff Information
+								Add New Staff
 							</h1>
 						</div><!-- /.page-header -->
 
