@@ -27,7 +27,7 @@ include 'conn/dbconnection.php';
 		$MME=$arr2[$_REQUEST['MME']];
 
 			// $update = "call update_staffpma('".$staffID."','".$staffName."','".$trade."','".$region."','".$locationS."','".$jobGrade."','".$retirementDate."','".$statusA."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
-			$update = "call update_staffskgas('".$_REQUEST['staffID']."','".$_REQUEST['staffName']."','".$_REQUEST['trade']."','".$_REQUEST['region']."','".$_REQUEST['locationS']."','".$_REQUEST['jobGrade']."','".$_REQUEST['retirementDate']."','".$_REQUEST['statusA']."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."')";
+			$update = "call update_staffskgas('".$_REQUEST['staffID']."','".$_REQUEST['staffName']."','".$_REQUEST['trade']."','".$_REQUEST['region']."','".$_REQUEST['locationS']."','".$_REQUEST['jobGrade']."','".$_REQUEST['retirementDate']."','".$_REQUEST['statusA']."','".$eLearning."','".$heartMind."','".$DCS."','".$OTS."','".$oralInterview."','".$MME."','".$_REQUEST['remarks']."')";
 			$essms_update = mysqli_query($dba,$update);
 			mysqli_next_result($dba);
 		  
@@ -399,6 +399,17 @@ include 'conn/dbconnection.php';
 																		<option>Yes</option>
 																		<option>No</option>
 																	</select>					
+																	</span>
+																</div>
+															</div>
+															<div class="space-4"></div>
+															<div class="form-group">
+																<label class="col-sm-3 control-label no-padding-right">Remarks : </label>
+																<div class="col-sm-9">
+																	<span class="input-icon input-icon-right">
+																	<textarea name="remarks" id="remarks" placeholder="" class="form-control">
+																		<?php echo $row['remarks'];?>
+																	</textarea>
 																	</span>
 																</div>
 															</div>
