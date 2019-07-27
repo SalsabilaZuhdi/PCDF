@@ -9,63 +9,6 @@ $id = $_SESSION['id'];
  }
 
  else {}
-
-
-	if(@$_SESSION['position'] == "4" ) 
-	{
-	$select = "call select_changePass('".$id."')";
-
-	$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
-	mysqli_next_result($dba);
-	$row = mysqli_fetch_array($essms_select);
-		if(isset($_REQUEST['submit']))
-		{
-				$update = "call update_changePassword('".$id."','".$_REQUEST['pass']."')";
-				
-				$essms_update = mysqli_query($dba,$update);
-				mysqli_next_result($dba);
-				if ($essms_update) 
-				{
-				    echo "<script> alert('Your password has been change!')</script>";
-					echo'<META HTTP-EQUIV="Refresh" CONTENT="0.001; URL=changePassword.php">';
-				}
-				else
-				{
-					echo "<script> alert('Unsuccessful. Please try again!')</script>";
-					echo '<META HTTP-EQUIV="Refresh" CONTENT="0.01; URL=changePassword.php">';
-				}
-		}
-	}
-	else
-	{
-		
-	$select = "call select_changePassL('".$id."')";
-
-	$essms_select =mysqli_query($dba,$select) or die (mysqli_error());
-	mysqli_next_result($dba);
-	$row = mysqli_fetch_array($essms_select);
-	    if(isset($_REQUEST['submit']))
-		{
-				$update = "call update_changePass('".$id."','".$_REQUEST['pass']."')";
-				
-				$essms_update = mysqli_query($dba,$update);
-				mysqli_next_result($dba);
-			  
-				if ($essms_update) 
-				{
-		
-					echo "<script> alert('Your password has been change!')</script>";
-					echo'<META HTTP-EQUIV="Refresh" CONTENT="0.001; URL=changePassword.php">';
-				}
-				else
-				{
-					echo "<script> alert('Unsuccessful. Please try again!')</script>";
-					echo '<META HTTP-EQUIV="Refresh" CONTENT="0.01; URL=changePassword.php">';
-				}
-		}
-
-	}
-		
 	
 ?>
 <!DOCTYPE html>
